@@ -3,7 +3,10 @@ import music_shop.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ShopTest {
 
@@ -12,6 +15,7 @@ public class ShopTest {
         ISell trombone;
         ISell musicSheet;
         ISell violinString;
+        
 
         @Before
         public void before() {
@@ -65,4 +69,12 @@ public class ShopTest {
                 shop.addToStock(trombone);
                 assertEquals(208, shop.totalPotentialProfit());
                 }
+
+        @Test
+        public void hasItemInShop() {
+                shop.addToStock(trombone);
+                shop.addToStock(musicSheet);
+                boolean result = shop.itemInShop(new ArrayList<ISell>(shop.stock),trombone);
+                assertTrue(result);
         }
+}

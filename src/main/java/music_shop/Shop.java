@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Shop {
 
     private String name;
-    private ArrayList<ISell> stock;
+    public ArrayList<ISell> stock;
 
     public Shop(String name) {
         this.name = name;
@@ -36,5 +36,13 @@ public class Shop {
             total += item.calculateMarkup();
         }
         return total;
+    }
+
+    public Boolean itemInShop(ArrayList<ISell> stock, ISell search_item) {
+        for (ISell iSell : stock)
+            if (iSell == search_item){
+                return true;
+            }
+            return false;
     }
 }
